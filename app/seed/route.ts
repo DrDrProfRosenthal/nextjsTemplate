@@ -1,4 +1,4 @@
- import bcrypt from 'bcrypt';
+/* import bcrypt from 'bcrypt';
  import { db } from '@vercel/postgres';
  import { invoices, customers, revenue, users } from '../lib/placeholder-data';
 
@@ -101,11 +101,11 @@
    return insertedRevenue;
  }
 
-export async function GET() {
-  /*  return Response.json({
+export async function GET() { 
+    return Response.json({
     message:
       'Uncomment this file and remove this line. You can delete this file when you are finished.',
-  }); */
+  }); 
 
    try {
      await client.sql`BEGIN`;
@@ -121,3 +121,5 @@ export async function GET() {
      return Response.json({ error }, { status: 500 });
   }
 }
+
+*/
