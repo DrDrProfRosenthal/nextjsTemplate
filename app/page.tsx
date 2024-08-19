@@ -4,6 +4,13 @@ import Link from 'next/link';
 import { lusitana } from '@/app/ui/fonts';
 
 export default function Page() {
+
+  const getDownloads = async () => {
+      fetch('http://localhost:3000/api/getDownloads')
+  }
+
+
+
   return (
     <main className="flex min-h-screen flex-col p-6">
       <div className="flex h-20 shrink-0 items-end rounded-lg bg-blue-500 p-4 md:h-52">
@@ -26,6 +33,10 @@ export default function Page() {
           >
             <span>Log in</span> <ArrowRightIcon className="w-5 md:w-6" />
           </Link>
+
+
+    
+
         </div>
         <div className="flex items-center justify-center p-6 md:w-3/5 md:px-28 md:py-12">
           {/* Add Hero Images Here */}
@@ -34,3 +45,5 @@ export default function Page() {
     </main>
   );
 }
+
+
