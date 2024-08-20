@@ -1,13 +1,30 @@
 "use client";
 
-import AcmeLogo from '@/app/ui/acme-logo';
-import { ArrowRightIcon } from '@heroicons/react/24/outline';
-import Link from 'next/link';
-import { lusitana } from '@/app/ui/fonts';
+
+import { useEffect, useState } from 'react';
 
 export default function Page() {
 
   var resultsVar = "none";
+
+
+  const [message, setMessage] = useState<string | null>(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch('/api/scraper');
+        const data = await response.json();
+        setMessage(data.message);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+
 
 
   async function handleOnClick() {
@@ -25,7 +42,11 @@ export default function Page() {
          
           {resultsVar}
    
-         
+          <div>
+      <h1>Welcome to My Next.js App</h1>
+      <p>{message ? message : "Loading..."}</p>
+    </div>
+    
         <button onClick={handleOnClick}>click me</button>
   
     </main>
