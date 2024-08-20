@@ -10,7 +10,7 @@ import puppeteer from 'puppeteer';
 export async function POST(request: Request) {
 
   
-    console.log("hely")
+    console.log("helyv")
 
      
         const browser = await puppeteer.launch();
