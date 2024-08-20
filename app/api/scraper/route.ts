@@ -1,3 +1,5 @@
+"use server";
+
 import { teardownTraceSubscriber } from 'next/dist/build/swc';
 import puppeteer from 'puppeteer';
 // Or import puppeteer from 'puppeteer-core';
