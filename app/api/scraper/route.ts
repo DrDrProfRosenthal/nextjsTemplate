@@ -9,7 +9,7 @@ export async function POST(request: Request) {
   
     console.log("hely")
 
-     
+     /*
         const browser = await puppeteer.launch();
         const page = await browser.newPage();
         
@@ -34,10 +34,10 @@ export async function POST(request: Request) {
 
         console.log('The title of this blog post is "%s".', fullTitle);
         
-        await browser.close();
+        await browser.close();*/
     
     return Response.json({
-        test:fullTitle
+        test: true // fullTitle
     })
 
 }
