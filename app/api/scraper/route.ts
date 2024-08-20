@@ -1,3 +1,4 @@
+import { teardownTraceSubscriber } from 'next/dist/build/swc';
 import puppeteer from 'puppeteer';
 // Or import puppeteer from 'puppeteer-core';
 
@@ -9,7 +10,7 @@ export async function POST(request: Request) {
   
     console.log("hely")
 
-     /*
+     
         const browser = await puppeteer.launch();
         const page = await browser.newPage();
         
@@ -34,10 +35,11 @@ export async function POST(request: Request) {
 
         console.log('The title of this blog post is "%s".', fullTitle);
         
-        await browser.close();*/
+        await browser.close();
     
     return Response.json({
-        test: true // fullTitle
+        test: true 
+        
     })
 
 }
