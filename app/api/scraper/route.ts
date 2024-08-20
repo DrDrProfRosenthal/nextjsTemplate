@@ -38,7 +38,7 @@ export async function POST(request: Request) {
         await browser.close();
     
     return Response.json({
-        test: true 
+        test: fullTitle 
         
     })
 
