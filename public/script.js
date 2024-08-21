@@ -1,6 +1,6 @@
 
 console.log("hello I'm your computer")
-
+/*
 document.getElementById("myBtn").focus();
 
 var vocabList = [];
@@ -8,7 +8,7 @@ var currentIndex = 0;
 
 
 
-// var urlExplain = "https://linguee-api.fly.dev/api/v2/external_sources?query=wary&src=en&dst=en&guess_direction=true&follow_corrections=on_empty_translations"
+ var urlExplain = "https://linguee-api.fly.dev/api/v2/external_sources?query=wary&src=en&dst=en&guess_direction=true&follow_corrections=on_empty_translations"
     
 fetch('vocabs.csv')
         .then(response => response.text())
@@ -129,7 +129,7 @@ function displayNextVocab() {
     }
 
     
-    
+    */
 
 
 
