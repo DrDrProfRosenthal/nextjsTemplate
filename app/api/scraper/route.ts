@@ -1,82 +1,29 @@
 "use server";
 
-import { teardownTraceSubscriber } from 'next/dist/build/swc';
-import puppeteer from 'puppeteer';
-// Or import puppeteer from 'puppeteer-core';
 import { NextResponse } from 'next/server';
 
-
-
-export async function POST(request: Request) {
-
-  
-    console.log("helyv")
-
-     
-        const browser = await puppeteer.launch();
-        const page = await browser.newPage();
-        
-
-        await page.goto('https://developer.chrome.com/');
-        
-        
-        await page.setViewport({width: 1080, height: 1024});
-        
-    
-        await page.locator('.devsite-search-field').fill('automate beyond recorder');
-        
-    
-        await page.locator('.devsite-result-item-link').click();
-        
-    
-        const textSelector = await page
-        .locator('text/Customize and automate')
-        .waitHandle();
-        const fullTitle = await textSelector?.evaluate(el => el.textContent);
-        
-
-        console.log('The title of this blog post is "%s".', fullTitle);
-        
-        await browser.close();
-        
-        const data = "Hello from the scraper route! POST";
-        return NextResponse.json({ message: data });
-    
-
-}
-
 export async function GET() {
+  try {
+    // Fetch data from the external API
+    const response = await fetch('https://linguee-api.fly.dev/api/v2/external_sources?query=wary&src=en&dst=en&guess_direction=true&follow_corrections=on_empty_translations');
 
+    // Check if the response is OK (status 200-299)
+    if (!response.ok) {
+      throw new Error(`Failed to fetch data: ${response.statusText}`);
+    }
 
-    console.log("helyv")
+    // Parse the response as JSON
+    const data = await response.json();
 
-     
-    const browser = await puppeteer.launch();
-    const page = await browser.newPage();
-    
+    // Return the fetched data as JSON
+    return NextResponse.json(data);
+  } catch (error) {
+    console.error('Error fetching data:', error);
 
-    await page.goto('https://developer.chrome.com/');
-    
-    
-    await page.setViewport({width: 1080, height: 1024});
-    
-
-    await page.locator('.devsite-search-field').fill('automate beyond recorder');
-    
-
-    await page.locator('.devsite-result-item-link').click();
-    
-
-    const textSelector = await page
-    .locator('text/Customize and automate')
-    .waitHandle();
-    const fullTitle = await textSelector?.evaluate(el => el.textContent);
-    
-
-    console.log('The title of this blog post is "%s".', fullTitle);
-    
-    await browser.close();
-    
-    const data = "Hello from the scraper route!";
-    return NextResponse.json({ message: data });
+    // Return an error response if the fetch fails
+    return NextResponse.json(
+      { error: 'Failed to fetch data' },
+      { status: 500 }
+    );
   }
+}
